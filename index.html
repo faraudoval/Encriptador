@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./output.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="./style.css">
+    <title>Encriptador</title>
+</head>
+
+<body class="bg-primary-color">
+    <header class="header">
+        <nav class="nav m-2 p-2 flex flex-col md:flex-row md:justify-between items-center justify-center h-full">
+            <div class="nav__title text-[28px] flex flex-col md:items-start items-center">
+                <a class='nav__title-logo text-color2 ' href='https://github.com/faraudoval'
+                    alt="Logo">Faraudo<span class="nav__logo--variant text-color2"></span></a>
+
+                <div class=" flex flex-row sublogo p-0 m-0 inherit top-[-5px]">
+                    <h3 class="text-color2 text-[16px]">Hecho por: <span class="text-secondary-color">Maria Valentina Faraudo Figueroa</span></h3>
+                </div>
+            </div>
+
+            <ul
+                class="nav-link nav-link-menu text-[20px] items-center flex md:flex-row md:ml-auto md:pt-2 md:pr-[40px] gap-5 py-2">
+                <li class="nav-items text-color2"><a href="https://www.linkedin.com/in/valentina-faraudo-08651622b/" class="nav-links">LinkedIn</a></li>
+                <li class="nav-items text-color2"><a href="https://github.com/faraudoval" class="nav-links">Más Proyectos</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="flex flex-col items-center justify-center min-h-screen">
+
+        <div class="bg-color5 p-6 border-solid border-[2px] border-[black] transition duration-300 hover:bg-black hover:text-white shadow-md w-100 h-[40px] flex flex-row items-center m-6 ">
+            <label class="inline-flex items-center">
+                <input id= "encryptToggle" type="radio" class="form-radio checked:bg-color1" name="toggle" value="encriptar" checked>
+                <span class="ml-2 ">Encriptar</span>
+            </label>
+    
+            <label class="inline-flex items-center ml-6">
+                <input  id= "decryptToggle" type="radio" class="form-radio text-green-500" name="toggle" value="desencriptar">
+                <span class="ml-2">Desencriptar</span>
+            </label>
+        </div>
+        
+        <div class="grid items-center md:grid-cols-2 gap-5 justify-center">
+
+            <form id="button" class="flex flex-col items-center">
+                <label for="input-message" id = "input-label"
+                    class="block mb-2 text-sm font-medium uppercase text-color1">Ingresa el texto que quieres Encriptar</label>
+                <textarea id="input-message" rows="4" spellcheck="false"
+                    class="box-left outline-none block p-2.5 md:w-96 w-80 text-sm bg-color4 border-solid border-[2px] border-black focus:color1 focus:border-black placeholder:text-color1 text-color1 dark:focus:ring-blue-500 dark:focus:border-color1 resize-none"></textarea>
+                <div class="my-2 py-2">
+                    <button id="encryptButton" type="submit" onclick = "actionController()"
+                        class="button actionButton text-[18px] font-semibold text-color1 bg-color5 p-2 border-solid border-[2px] border-[black] transition duration-300 hover:bg-black hover:text-white">Encriptar
+                        Texto</button>
+                    <button id="copyButtonInput" onclick="copyText(this)"
+                        class="button text-[18px] font-semibold text-color1 bg-color5 p-2 border-solid border-[2px] border-[black] transition duration-300 hover:bg-black hover:text-white">Copiar
+                        Texto</button>
+                </div>
+            </form>
+
+
+            <div id="outputSection" class="flex flex-col items-center">
+                <label for="outputMessage" class="block mb-2 text-sm font-medium uppercase text-color1">Texto desencriptado: </label>
+                <textarea id="outputMessage" rows="4"
+                    class="box-right outline-none block p-2.5 md:w-96 w-80 text-sm bg-color4 border-solid border-[2px] border-black focus:color1 focus:border-black placeholder:text-color1 text-color1 dark:focus:ring-blue-500 dark:focus:border-color1 resize-none "
+                    placeholder="Aquí estará tu texto encriptado" readonly></textarea>
+
+                <div class="my-2 py-2">
+                    <button id="copyButton"
+                        class="button copyButton text-[18px] font-semibold text-color1 bg-color5 p-2 border-solid border-[2px] border-[black] transition duration-300 hover:bg-black hover:text-white" onclick="copyText(this)" >Copiar
+                        Texto</button>
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+        <div id="toast-success" class=" hidden text-[18px] items-center  font-semibold text-color1 bg-color5 p-2 border-solid border-[2px] border-[black] transition duration-300 hover:bg-black hover:text-white" role="alert">
+            <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8  rounded-lg bg-green-800 text-green-200">
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+                </svg>
+                <span class="sr-only ">Check icon</span>
+            </div>
+            <div class="ms-3 text-sm font-normal ">El texto se ha copiado</div>
+
+        </div>
+
+    </main>
+
+    
+    <script src="app.js"></script>
+</body>
+
+</html>
